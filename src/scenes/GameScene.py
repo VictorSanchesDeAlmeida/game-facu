@@ -135,9 +135,13 @@ class GameScene(Scene):
             self.next_scene = VictoryScene(self.game)
         
         self.all_sprites.update()
+        
+        # Atualizar background do level
+        self.level.update()
     
     def draw(self, screen):
-        screen.fill((30, 30, 30))
+        # Desenhar background do level com parallax
+        self.level.draw_background(screen, self.camera_x, self.camera_y)
         
         # Desenhar todos os sprites com offset da câmera
         for sprite in self.all_sprites:
