@@ -122,6 +122,11 @@ class GameScene(Scene):
                 ]
                 self.killer_taunt = random.choice(taunts)
         
+        # Verificar Vitória - todos os demônios foram derrotados
+        if len(self.enemies) == 0 and not self.game_over:
+            from scenes.VictoryScene import VictoryScene
+            self.next_scene = VictoryScene(self.game)
+        
         self.all_sprites.update()
     
     def draw(self, screen):
@@ -165,7 +170,7 @@ class GameScene(Scene):
         
         # Desenhar HUD
         if not self.game_over:
-            self.hud.draw(screen, self.player)
+            self.hud.draw(screen, self.player, len(self.enemies))
         
         # Desenhar tela de Game Over
         if self.game_over:

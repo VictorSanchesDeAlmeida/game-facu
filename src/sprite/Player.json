@@ -1,37 +1,23 @@
 {
-  "spriteSheet": "Demon.png",
+  "spriteSheet": "Player.png",
   "type": "animation",
   "sprites": [
     {
       "name": "idle",
       "frames": [
-        { "x": 581, "y": 6, "width": 55, "height": 53 },
-        { "x": 517, "y": 4, "width": 55, "height": 55 },
-        { "x": 453, "y": 4, "width": 55, "height": 56 },
-        { "x": 389, "y": 3, "width": 55, "height": 55 }
+        { "x": 44, "y": 32, "width": 180, "height": 192 }
       ],
       "frameDuration": 100
     },
     {
       "name": "walk",
       "frames": [
-        { "x": 580, "y": 69, "width": 54, "height": 54 },
-        { "x": 512, "y": 69, "width": 60, "height": 55 },
-        { "x": 450, "y": 68, "width": 58, "height": 51 },
-        { "x": 389, "y": 70, "width": 55, "height": 53 }
+        { "x": 44, "y": 32, "width": 180, "height": 192 },
+        { "x": 295, "y": 36, "width": 160, "height": 184 },
+        { "x": 556, "y": 32, "width": 160, "height":186 },
+        { "x": 44, "y": 291, "width": 176, "height": 176 }
       ],
       "frameDuration": 80
-    },
-    {
-      "name": "attack",
-      "frames": [
-        { "x": 581, "y": 134, "width": 55, "height": 53 },
-        { "x": 517, "y": 133, "width": 55, "height": 54 },
-        { "x": 453, "y": 133, "width": 55, "height": 54 },
-        { "x": 386, "y": 134, "width": 55, "height": 53 },
-        { "x": 325, "y": 134, "width": 55, "height": 53 }
-      ],
-      "frameDuration": 40
     }
   ]
 }
