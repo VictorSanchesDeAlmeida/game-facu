@@ -42,14 +42,15 @@ class Demon(pygame.sprite.Sprite):
         self.prepare_attack_timer = 0  # Timer para preparar ataque
         
     def load_animation_config(self):
-        config_path = os.path.join("src", "sprite", "Demon.json")
+        from utils.assets_loader import get_resource_path
+        config_path = get_resource_path(os.path.join("src", "sprite", "Demon.json"))
         
         try:
             with open(config_path, 'r') as f:
                 config = json.load(f)
             
             # Carregar spritesheet
-            spritesheet_path = os.path.join("assets", config["spriteSheet"])
+            spritesheet_path = get_resource_path(os.path.join("assets", config["spriteSheet"]))
             self.spritesheet = pygame.image.load(spritesheet_path)
             
             # Processar animações
