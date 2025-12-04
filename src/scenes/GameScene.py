@@ -12,7 +12,7 @@ class GameScene(Scene):
         super().__init__(game)
         
         # Inicializar componentes do jogo
-        image_player = load_image("player.png")
+        image_player = load_image("Player.png")
         self.player = Player(image_player, 150, 650)
         self.all_sprites = pygame.sprite.Group()
         

@@ -15,20 +15,32 @@ def get_resource_path(relative_path):
 
 def load_image(file_path):
     """Carregar imagem com caminho correto para desenvolvimento e exe"""
+    # Primeiro tenta o caminho completo via get_resource_path
     full_path = get_resource_path(os.path.join("assets", file_path))
     
-    # Verificar se o arquivo existe
+    # Se não encontrar, tenta variações do nome do arquivo
     if not os.path.exists(full_path):
-        # Tentar caminho alternativo para desenvolvimento
-        alt_path = os.path.join("assets", file_path)
+        # Tenta com o nome em maiúsculo (Player.png ao invés de player.png)
+        capitalized_name = file_path.title()
+        alt_path = get_resource_path(os.path.join("assets", capitalized_name))
         if os.path.exists(alt_path):
             full_path = alt_path
         else:
-            # Criar uma imagem placeholder se não encontrar
-            print(f"Aviso: Imagem não encontrada: {file_path}")
-            placeholder = pygame.Surface((64, 64))
-            placeholder.fill((255, 0, 255))  # Magenta para indicar erro
-            return placeholder.convert_alpha()
+            # Tenta apenas o caminho relativo para desenvolvimento
+            dev_path = os.path.join("assets", file_path)
+            if os.path.exists(dev_path):
+                full_path = dev_path
+            else:
+                # Tenta o nome capitalizado no desenvolvimento
+                dev_cap_path = os.path.join("assets", capitalized_name)
+                if os.path.exists(dev_cap_path):
+                    full_path = dev_cap_path
+                else:
+                    # Criar uma imagem placeholder se não encontrar
+                    print(f"Aviso: Imagem não encontrada: {file_path}")
+                    placeholder = pygame.Surface((64, 64))
+                    placeholder.fill((255, 0, 255))  # Magenta para indicar erro
+                    return placeholder.convert_alpha()
     
     try:
         return pygame.image.load(full_path).convert_alpha()
